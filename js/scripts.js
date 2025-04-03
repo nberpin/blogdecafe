@@ -54,5 +54,56 @@ navegacion.appendChild(nuevoEnlace);
 // });
 
 //eventos sobre inputs y textarea
+
+// nombre.addEventListener("change", function(e){
+//     console.log("escribiendo");
+//     console.log(e.target.value);
+// });
+
+// nombre.addEventListener("input", function(e){
+//     console.log(e.target.value);
+// })
+// email.addEventListener("input", function(e){
+//     console.log(e.target.value);
+// })
+// mensaje.addEventListener("input", function(e){
+//     console.log(e.target.value);
+// })
 const nombre=document.querySelector("#nombre");
-console.log(nombre);
+const email=document.querySelector("#email");
+const mensaje=document.querySelector("#mensaje");
+const formulario=document.querySelector(".formulario");
+
+const datos={
+    nombre:"",
+    email:"",
+    mensaje:""
+}
+
+
+nombre.addEventListener("input", leerTexto);
+email.addEventListener("input", leerTexto);
+mensaje.addEventListener("input", leerTexto);
+
+function leerTexto(e){
+    datos[e.target.id]=e.target.value;
+    console.log(e.target.id);
+    console.log(datos);
+
+}
+
+formulario.addEventListener("submit", function(e){
+    e.preventDefault();
+    const {nombre,email,mensaje}=datos;
+    if (nombre===""|email===""|mensaje===""){
+        console.log("al menos un campo sigue vacío");
+        mostrarError("Todos los campos deben estar rellenos")
+        return;
+    }
+})
+
+function mostrarError(mensaje){
+    const alerta=document.createElement("p");
+    alerta.textContent=mensaje;
+    formulario.appendChild(alerta);
+}
