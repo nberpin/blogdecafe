@@ -105,5 +105,5 @@ formulario.addEventListener("submit", function(e){
 function mostrarError(mensaje){
     const alerta=document.createElement("p");
     alerta.textContent=mensaje;
-    formulario.appendChild(alerta);
+    formulario.appendChild(alerta);git 
 }
